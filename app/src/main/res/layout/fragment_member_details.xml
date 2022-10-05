@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.MemberDetailsFragment">
+
+    <data>
+        <variable
+            name="member"
+            type="com.suvilai.ex5.ParliamentMember" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="185dp"
+            android:layout_height="194dp"
+            android:layout_marginTop="120dp"
+            android:layout_weight="1"
+            android:contentDescription="Image"
+
+            app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/idView"
+            android:layout_width="112dp"
+            android:layout_height="55dp"
+            android:text="@{member.hetekaId, default=id}"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonNext"
+            android:layout_width="115dp"
+            android:layout_height="105dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/round_button"
+            android:backgroundTintMode="add"
+            android:text="randomize"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/nameView"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginTop="32dp"
+            android:text="@{member.fullName()}"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/partyView"
+            android:layout_width="109dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="100dp"
+            android:text="@{member.party}"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameView" />
+
+        <TextView
+            android:id="@+id/seatView"
+            android:layout_width="101dp"
+            android:layout_height="41dp"
+            android:text="@{member.seatNumber}"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/partyView"
+            app:layout_constraintTop_toBottomOf="@+id/nameView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/ministerView"
+            android:layout_width="208dp"
+            android:layout_height="52dp"
+            android:text="@{member.minister ? ` (Minister)` : ``}"
+            android:textAlignment="center"
+            android:textColor="#308334"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/partyView"
+            app:layout_constraintVertical_bias="0.064" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
