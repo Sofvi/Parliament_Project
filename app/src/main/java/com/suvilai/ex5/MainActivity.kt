@@ -1,40 +1,33 @@
 package com.suvilai.ex5
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.suvilai.ex5.adapter.ItemAdapter
-import com.suvilai.ex5.data.Datasource
-import java.lang.ProcessBuilder.Redirect.to
+import androidx.navigation.NavHost
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
+
+/**     Suvi Laitinen,  5.10.2022
+ *      2113710
+ *
+ *      MainActivity class for the app
+ */
 
 class MainActivity : AppCompatActivity() {
+
+    //private val periodicWorkRequest = PeriodicWorkRequestBuilder<DownloadWorker>(24, TimeUnit.HOURS).build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*
-        val myDataset = Datasource().member()
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.adapter = ItemAdapter(this, myDataset)
+        //WorkManager.getInstance(MyApp.appContext).enqueueUniquePeriodicWork("updateMembers", ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest)
 
-        recyclerView.setHasFixedSize(true)
-
-         */
-
+        //setupActionBarWithNavController(findNavController(R.id.fragmentContainerView))
     }
-
-
-    /*
-    private fun replaceFragment(fragment: Fragment) {
-        val action = supportFragmentManager.beginTransaction()
-        action.replace(R.id.recycler_view, fragment)
-        action.commit()
-    }
-
-     */
 
 }

@@ -1,22 +1,41 @@
 package com.suvilai.ex5.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.suvilai.ex5.MyApp
+import com.suvilai.ex5.ParliamentMember
 import com.suvilai.ex5.R
-import com.suvilai.ex5.adapter.ItemAdapter
+import com.suvilai.ex5.adapter.MemberListAdapter
+import com.suvilai.ex5.data.Datasource
+import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.FragmentMemberListBinding
+import com.suvilai.ex5.repository.MemberRepository
+import com.suvilai.ex5.viewmodels.MemberListViewModel
+import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
+
+/**     Suvi Laitinen, 5.10.2022
+ *      2113710
+ *
+ *      The main fragment of the application. Shows a list of all the members in
+ *      the parliament in a RecyclerView.
+ */
+
 
 private lateinit var binding: FragmentMemberListBinding
-@SuppressLint("StaticFieldLeak")
-private lateinit var adapter: ItemAdapter
+private lateinit var adapter: MemberListAdapter
 
 class MemberListFragment : Fragment() {
+
+    private val memberViewModel : MemberListViewModel by viewModels {
+        MemberListViewModelFactory()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,18 +44,50 @@ class MemberListFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_list, container, false)
 
-        adapter = ItemAdapter()
-        val recyclerView = binding.recyclerView
+        adapter = MemberListAdapter()
+        val recyclerView = binding.memberRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        /*
-        getList()
-        setHasOptionsMenu(true)
-
-         */
+        memberViewModel.getMembers()
 
         return binding.root
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.bottom_nav, menu)
+
+    }
+
+    /*
+    companion object {
+        @JvmStatic
+        @BindingAdapter("loadListItemImage")
+        fun loadListItemImage(view: ImageView, imageId: String?) {
+            Glide.with(view.context)
+                .load(ImageApiService.imageUrlBuilder(imageId))
+                .override(300, 300)
+                .fitCenter()
+                .circleCrop()
+                .into(view)
+        }
+    }
+
+     */
+
+    /*
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        //takes data from manual class
+        val data = Datasource().member()
+
+        adapter = MemberListAdapter(data)
+        val recyclerView = binding.memberRecyclerView
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+         */
 
 }

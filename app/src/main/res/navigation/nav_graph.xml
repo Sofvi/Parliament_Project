@@ -3,21 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/memberListFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.suvilai.ex5.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/memberDetailsFragment"
         android:name="com.suvilai.ex5.fragments.MemberDetailsFragment"
         android:label="fragment_member_details"
         tools:layout="@layout/fragment_member_details" />
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.suvilai.ex5.ListFragment"
-        android:label="fragment_list_list"
-        tools:layout="@layout/fragment_list_list" />
+        android:id="@+id/memberListFragment"
+        android:name="com.suvilai.ex5.fragments.MemberListFragment"
+        android:label="MemberListFragment" >
+        <action
+            android:id="@+id/action_memberListFragment_to_memberDetailsFragment"
+            app:destination="@id/memberDetailsFragment" />
+    </fragment>
 </navigation>
