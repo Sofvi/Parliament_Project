@@ -1,5 +1,5 @@
 package com.suvilai.ex5.fragments
-
+/*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.suvilai.ex5.ParliamentMember
 import com.suvilai.ex5.R
 import com.suvilai.ex5.databinding.FragmentMemberDetailsBinding
+
 
 class MemberDetailsFragment : Fragment() {
 
@@ -59,3 +60,5 @@ class MemberDetailsFragment : Fragment() {
 
      */
 }
+
+ */

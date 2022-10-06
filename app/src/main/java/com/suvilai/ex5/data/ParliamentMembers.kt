@@ -4,6 +4,10 @@ import kotlinx.android.parcel.Parcelize
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.suvilai.ex5.network.ApiClient
+import com.suvilai.ex5.repository.MemberRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 
 
 @Parcelize
@@ -19,4 +23,5 @@ data class ParliamentMembers(
     val pictureUrl: String = "",
     var fullname: String = "$firstname $lastname"
 ) : Parcelable
+
 

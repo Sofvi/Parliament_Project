@@ -4,6 +4,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.suvilai.ex5.data.ParliamentMembers
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
@@ -13,6 +14,7 @@ import retrofit2.http.GET
  *      ApiService file
  */
 
+//Start of API
 private const val BASE_URL = "https://users.metropolia.fi/~peterh/"
 
 private val moshi = Moshi.Builder()
@@ -20,7 +22,7 @@ private val moshi = Moshi.Builder()
     .build()
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
 
@@ -32,7 +34,11 @@ interface ApiService {
     //suspend fun getMemberDetailsList() : List<ParliamentMemberInfo>
 }
 
-
-val retrofitService : ApiService by lazy {
-    retrofit.create(ApiService::class.java)
+object ApiClient {
+    val retrofitService : ApiService by lazy {
+        retrofit.create(ApiService::class.java)
+    }
 }
+
+
+

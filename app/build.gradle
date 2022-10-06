@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id "org.jetbrains.kotlin.kapt"
-    id ("androidx.navigation.safeargs.kotlin")
+    id "androidx.navigation.safeargs.kotlin"
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
 }
@@ -59,10 +59,11 @@ dependencies {
 
     // Moshi
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
 
-    // Retrofit
+    //Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    // Retrofit with Scalar Converter
+    //Retrofit with Scalar Converter
     implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
 
     // Room components
@@ -71,5 +72,8 @@ dependencies {
     implementation "androidx.room:room-ktx:2.3.0"
     androidTestImplementation "androidx.room:room-testing:2.3.0"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
 
 }

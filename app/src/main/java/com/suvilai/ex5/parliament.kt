@@ -1,6 +1,6 @@
 package com.suvilai.ex5
 
-
+/*
 data class ParliamentMember(
     val hetekaId: Int,
     val seatNumber: Int = 0,
@@ -1870,3 +1870,5 @@ data class ParliamentMember(
         )
     }
 }
+
+ */

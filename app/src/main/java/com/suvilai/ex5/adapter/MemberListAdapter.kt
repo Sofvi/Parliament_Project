@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.suvilai.ex5.data.ParliamentMembers
-import com.suvilai.ex5.databinding.FragmentMemberListBinding
+import com.suvilai.ex5.databinding.ListItemBinding
 
 
 class MemberListAdapter(
@@ -19,8 +19,8 @@ class MemberListAdapter(
     ): MyViewHolder {
         val itemView: LayoutInflater = LayoutInflater.from(parent.context)
 
-        val binding: FragmentMemberListBinding =
-            FragmentMemberListBinding.inflate(itemView, parent, false)
+        val binding: ListItemBinding =
+            ListItemBinding.inflate(itemView, parent, false)
 
         return MyViewHolder(binding)
     }
@@ -31,12 +31,12 @@ class MemberListAdapter(
     }
     override fun getItemCount() = dataset.size
 
-    inner class MyViewHolder(val binding: FragmentMemberListBinding):RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root) {
         //val fullName: TextView = itemView.findViewById(R.id.fullName_title)
 
 
         fun setViewHolderData(member: ParliamentMembers) {
-            this.member = member
+            binding.member = member
         }
 
 

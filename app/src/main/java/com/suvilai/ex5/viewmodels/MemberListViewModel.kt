@@ -10,12 +10,15 @@ class MemberListViewModel(private val memberRepository: MemberRepository) : View
 
     val allMembers: LiveData<List<ParliamentMembers>> = memberRepository.getMembers()
 
+
     fun populate() {
         viewModelScope.launch(Dispatchers.IO) {
             val members = memberRepository.fetch()
             memberRepository.insert(*members.toTypedArray())
         }
     }
+
+
 }
 
 

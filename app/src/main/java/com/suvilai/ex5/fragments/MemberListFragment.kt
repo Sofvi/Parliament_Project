@@ -5,15 +5,17 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.distinctUntilChanged
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.navigation.fragment.findNavController
+import com.suvilai.ex5.App
+import com.suvilai.ex5.MyApp
 import com.suvilai.ex5.R
 import com.suvilai.ex5.adapter.MemberListAdapter
-import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.FragmentMemberListBinding
+import com.suvilai.ex5.repository.MemberRepository
 import com.suvilai.ex5.viewmodels.MemberListViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
-import kotlinx.android.synthetic.main.list_item.*
+import kotlinx.android.synthetic.main.fragment_member_list.*
 
 /**     Suvi Laitinen, 5.10.2022
  *      2113710
@@ -24,31 +26,50 @@ import kotlinx.android.synthetic.main.list_item.*
 
 
 private lateinit var binding: FragmentMemberListBinding
-private lateinit var adapter: MemberListAdapter
+//private lateinit var adapter: MemberListAdapter
 
 class MemberListFragment : Fragment() {
 
+    // App
+    private val application by lazy { requireActivity().application as App }
+
+    //ViewModel
     private val memberViewModel : MemberListViewModel by viewModels {
-        MemberListViewModelFactory()
+        MemberListViewModelFactory(application.memberRepository)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentMemberListBinding.inflate(inflater,container,false)
 
+        /*
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_list, container, false)
 
-        adapter = MemberListAdapter()
         val recyclerView = binding.memberRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        adapter = MemberListAdapter(members)
+
+         */
 
         //memberViewModel.getMembers()
 
         memberViewModel.populate()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        memberViewModel.allMembers.distinctUntilChanged().observe(viewLifecycleOwner) { members ->
+            this.memberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            this.memberRecyclerView.adapter = MemberListAdapter(members)}
+
+        //  Get necessary data.
+       // memberViewModel.populate()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
