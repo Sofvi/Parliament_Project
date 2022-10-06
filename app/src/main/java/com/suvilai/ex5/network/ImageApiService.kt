@@ -1,5 +1,6 @@
 package com.suvilai.ex5.network
 
+/*
 object ImageApiClient {
     private const val BASE_URL = "https://avoindata.eduskunta.fi"
 
@@ -10,3 +11,5 @@ object ImageApiClient {
         return "$BASE_URL/$imageId"
     }
 }
+
+ */

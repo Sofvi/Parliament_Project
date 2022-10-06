@@ -26,7 +26,10 @@ private val retrofit = Retrofit.Builder()
 
 interface ApiService {
     @GET("seating.json")
-    suspend fun getMembersList() : List<ParliamentMembers>
+    suspend fun getMemberList() : List<ParliamentMembers>
+
+    //@GET("extras.json")
+    //suspend fun getMemberDetailsList() : List<ParliamentMemberInfo>
 }
 
 

@@ -1,23 +1,16 @@
 package com.suvilai.ex5.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.suvilai.ex5.MyApp
-import com.suvilai.ex5.ParliamentMember
+import androidx.navigation.fragment.findNavController
 import com.suvilai.ex5.R
 import com.suvilai.ex5.adapter.MemberListAdapter
-import com.suvilai.ex5.data.Datasource
 import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.FragmentMemberListBinding
-import com.suvilai.ex5.repository.MemberRepository
 import com.suvilai.ex5.viewmodels.MemberListViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
 import kotlinx.android.synthetic.main.list_item.*
@@ -51,7 +44,9 @@ class MemberListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        memberViewModel.getMembers()
+        //memberViewModel.getMembers()
+
+        memberViewModel.populate()
 
         return binding.root
     }
@@ -60,6 +55,14 @@ class MemberListFragment : Fragment() {
         inflater.inflate(R.menu.bottom_nav, menu)
 
     }
+
+    /*
+    override fun onParliamentMemberClick(v: View?, member: ParliamentMembers) {
+        val action = MemberListFragment.toMemberDetailsFragment(member.hetekaId)
+        findNavController().navigate(action)
+    }
+
+     */
 
     /*
     companion object {

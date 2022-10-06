@@ -1,36 +1,44 @@
 package com.suvilai.ex5.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.suvilai.ex5.R
 import com.suvilai.ex5.data.ParliamentMembers
+import com.suvilai.ex5.databinding.FragmentMemberListBinding
 
-class MemberListAdapter : RecyclerView.Adapter<MemberListAdapter.MyViewHolder>() {
 
-    private var dataset = emptyList<ParliamentMembers>()
+class MemberListAdapter(
+    private val dataset: List<ParliamentMembers>
+) : RecyclerView.Adapter<MemberListAdapter.MyViewHolder>() {
+
+    //private var dataset = emptyList<ParliamentMembers>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item,
-            parent,false)
-        return MyViewHolder(itemView)
+        val itemView: LayoutInflater = LayoutInflater.from(parent.context)
+
+        val binding: FragmentMemberListBinding =
+            FragmentMemberListBinding.inflate(itemView, parent, false)
+
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        //val currentItem = dataset[position]
-        //holder.picture.setImageResource(currentItem.pictureUrl)
-        //holder.fullName.text = currentItem.fullName()
-        holder.fullName.text = dataset[position].toString()
+        //holder.fullName.text = dataset[position].toString()
+        holder.setViewHolderData(dataset[position])
     }
     override fun getItemCount() = dataset.size
 
-    inner class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        val fullName: TextView = itemView.findViewById(R.id.fullName_title)
+    inner class MyViewHolder(val binding: FragmentMemberListBinding):RecyclerView.ViewHolder(binding.root) {
+        //val fullName: TextView = itemView.findViewById(R.id.fullName_title)
+
+
+        fun setViewHolderData(member: ParliamentMembers) {
+            this.member = member
+        }
+
+
     }
 }

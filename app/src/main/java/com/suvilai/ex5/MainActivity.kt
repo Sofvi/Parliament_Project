@@ -6,6 +6,7 @@ import androidx.navigation.NavHost
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.suvilai.ex5.databinding.ActivityMainBinding
 
 /**     Suvi Laitinen,  5.10.2022
  *      2113710
@@ -19,11 +20,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        //val navHostFragment =
+          //  supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        //val navController = navHostFragment.navController
 
         //WorkManager.getInstance(MyApp.appContext).enqueueUniquePeriodicWork("updateMembers", ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest)
 

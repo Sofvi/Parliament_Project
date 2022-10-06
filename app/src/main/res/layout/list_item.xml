@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/border">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="@string/image"
-        tools:srcCompat="@tools:sample/avatars" />
+    <data>
+        <variable
+            name="member"
+            type="com.suvilai.ex5.data.ParliamentMembers" />
 
-    <TextView
-        android:id="@+id/fullName_title"
-        android:layout_width="252dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/abhaya_libre"
-        android:gravity="center_vertical"
-        android:text="esimerkki"
-        android:textColor="@color/black"
-        android:textSize="18sp">
+    </data>
 
-    </TextView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/border"
+        android:id="@+id/listFrame">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/image"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/fullName_title"
+            android:layout_width="252dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/abhaya_libre"
+            android:gravity="center_vertical"
+            android:text="esimerkki"
+            android:textColor="@color/black"
+            android:textSize="18sp">
+
+        </TextView>
+
+    </RelativeLayout>
+</layout>

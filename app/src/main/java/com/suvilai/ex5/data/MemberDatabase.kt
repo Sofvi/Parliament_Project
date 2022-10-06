@@ -17,7 +17,7 @@ abstract class MemberDatabase : RoomDatabase() {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
-                        MyApp.appContext,
+                        context.applicationContext,
                         MemberDatabase::class.java, "member_database"
                     )
                         .fallbackToDestructiveMigration().build()

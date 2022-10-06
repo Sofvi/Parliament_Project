@@ -1,29 +1,29 @@
 package com.suvilai.ex5.viewmodels
 
 import androidx.lifecycle.*
-import com.suvilai.ex5.MyApp
-import com.suvilai.ex5.data.MemberDatabase
+import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.repository.MemberRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MemberListViewModel : ViewModel(){
+class MemberListViewModel(private val memberRepository: MemberRepository) : ViewModel(){
 
-    private val memberRepository: MemberRepository
+    val allMembers: LiveData<List<ParliamentMembers>> = memberRepository.getMembers()
 
-    fun getMembers() = memberRepository.getMembers()
-
-    init {
-        val memberDao = MemberDatabase.getInstance(MyApp.appContext).memberDao()
-        memberRepository = MemberRepository(memberDao)
+    fun populate() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val members = memberRepository.fetch()
+            memberRepository.insert(*members.toTypedArray())
+        }
     }
-
 }
 
 
-class MemberListViewModelFactory : ViewModelProvider.Factory {
+class MemberListViewModelFactory(private val memberRepository: MemberRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MemberListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return MemberListViewModel() as T
+            return MemberListViewModel(memberRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
