@@ -1,11 +1,9 @@
 package com.suvilai.ex5
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavHost
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
+import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.ActivityMainBinding
 
 /**     Suvi Laitinen,  5.10.2022

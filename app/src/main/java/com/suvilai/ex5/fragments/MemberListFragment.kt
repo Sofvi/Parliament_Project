@@ -2,17 +2,18 @@ package com.suvilai.ex5.fragments
 
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.distinctUntilChanged
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.suvilai.ex5.App
+import com.bumptech.glide.Glide
 import com.suvilai.ex5.MyApp
 import com.suvilai.ex5.R
 import com.suvilai.ex5.adapter.MemberListAdapter
 import com.suvilai.ex5.databinding.FragmentMemberListBinding
-import com.suvilai.ex5.repository.MemberRepository
+import com.suvilai.ex5.network.ImageApiService
 import com.suvilai.ex5.viewmodels.MemberListViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
 import kotlinx.android.synthetic.main.fragment_member_list.*
@@ -31,7 +32,7 @@ private lateinit var binding: FragmentMemberListBinding
 class MemberListFragment : Fragment() {
 
     // App
-    private val application by lazy { requireActivity().application as App }
+    private val application by lazy { requireActivity().application as MyApp }
 
     //ViewModel
     private val memberViewModel : MemberListViewModel by viewModels {
@@ -44,18 +45,6 @@ class MemberListFragment : Fragment() {
     ): View {
         binding = FragmentMemberListBinding.inflate(inflater,container,false)
 
-        /*
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_list, container, false)
-
-        val recyclerView = binding.memberRecyclerView
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = MemberListAdapter(members)
-
-         */
-
-        //memberViewModel.getMembers()
-
         memberViewModel.populate()
 
         return binding.root
@@ -67,9 +56,6 @@ class MemberListFragment : Fragment() {
         memberViewModel.allMembers.distinctUntilChanged().observe(viewLifecycleOwner) { members ->
             this.memberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             this.memberRecyclerView.adapter = MemberListAdapter(members)}
-
-        //  Get necessary data.
-       // memberViewModel.populate()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -85,21 +71,19 @@ class MemberListFragment : Fragment() {
 
      */
 
-    /*
+
     companion object {
         @JvmStatic
         @BindingAdapter("loadListItemImage")
         fun loadListItemImage(view: ImageView, imageId: String?) {
             Glide.with(view.context)
-                .load(ImageApiService.imageUrlBuilder(imageId))
-                .override(300, 300)
-                .fitCenter()
-                .circleCrop()
+                .load(ImageApiService.imageBuilder(imageId))
+                .override(500, 500)
                 .into(view)
         }
     }
 
-     */
+
 
     /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

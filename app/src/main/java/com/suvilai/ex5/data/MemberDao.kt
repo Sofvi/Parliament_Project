@@ -2,10 +2,7 @@ package com.suvilai.ex5.data
 
 import android.os.Parcelable
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 
 
@@ -14,4 +11,10 @@ interface MemberDao {
 
     @Query("SELECT * FROM ParliamentMembers ORDER BY lastname")
     fun getMembers() : LiveData<List<ParliamentMembers>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(vararg users: ParliamentMembers)
+
+    @Query("SELECT * FROM ParliamentMembers WHERE party")
+    fun getParty(party: String): LiveData<List<ParliamentMembers>>
 }

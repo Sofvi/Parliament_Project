@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -11,38 +12,45 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:background="@drawable/border"
         android:id="@+id/listFrame">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_width="110dp"
+            android:layout_height="111dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:contentDescription="@string/image"
+            app:loadListItemImage="@{member.pictureUrl}"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/fullName_title"
             android:layout_width="252dp"
             android:layout_height="30dp"
-            android:layout_marginStart="140dp"
             android:layout_marginTop="26dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/imageView"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/abhaya_libre"
             android:gravity="center_vertical"
-            android:text="esimerkki"
+            android:text="@{member.fullname}"
             android:textColor="@color/black"
-            android:textSize="18sp">
-
+            android:textSize="22sp">
         </TextView>
+
+        <TextView
+            android:id="@+id/party"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="70dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="@{member.party}"/>
 
     </RelativeLayout>
 </layout>
