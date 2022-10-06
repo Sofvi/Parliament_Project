@@ -8,15 +8,6 @@ import com.suvilai.ex5.network.ApiService
 
 class MemberRepository(private val memberDao: MemberDao) {
 
-    private val _status = MutableLiveData<ApiService>()
-
-    val status: LiveData<ApiService>
-    get() = status
-
-    init {
-        _status.postValue(ApiService.LOADING)
-    }
-
-    //fun getMembers() = memberDao.getMembers()
+    fun getMembers() = memberDao.getMembers()
 
 }

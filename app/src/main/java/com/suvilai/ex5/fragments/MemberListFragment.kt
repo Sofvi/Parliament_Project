@@ -1,6 +1,7 @@
 package com.suvilai.ex5.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -19,6 +20,7 @@ import com.suvilai.ex5.databinding.FragmentMemberListBinding
 import com.suvilai.ex5.repository.MemberRepository
 import com.suvilai.ex5.viewmodels.MemberListViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
+import kotlinx.android.synthetic.main.list_item.*
 
 /**     Suvi Laitinen, 5.10.2022
  *      2113710

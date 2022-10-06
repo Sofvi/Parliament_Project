@@ -8,11 +8,11 @@ import com.suvilai.ex5.MyApp
 
 @Database(entities = [ParliamentMembers::class], version = 1, exportSchema = false)
 abstract class MemberDatabase : RoomDatabase() {
-    abstract val memberDao : MemberDao
+    abstract fun memberDao() : MemberDao
     companion object {
         @Volatile
         private var INSTANCE: MemberDatabase? = null
-        fun getInstance(): MemberDatabase {
+        fun getInstance(context: Context): MemberDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {

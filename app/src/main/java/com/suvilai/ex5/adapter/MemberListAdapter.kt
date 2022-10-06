@@ -1,5 +1,6 @@
 package com.suvilai.ex5.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.suvilai.ex5.data.ParliamentMembers
 
 class MemberListAdapter : RecyclerView.Adapter<MemberListAdapter.MyViewHolder>() {
 
-    private lateinit var dataset: List<ParliamentMembers>
+    private var dataset = emptyList<ParliamentMembers>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,13 +30,7 @@ class MemberListAdapter : RecyclerView.Adapter<MemberListAdapter.MyViewHolder>()
     }
     override fun getItemCount() = dataset.size
 
-    fun setData(member: List<ParliamentMembers>) {
-        this.dataset = member
-        notifyDataSetChanged()
-    }
-
     inner class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        //val picture: ShapeableImageView = itemView.findViewById(R.id.pictureUrl)
         val fullName: TextView = itemView.findViewById(R.id.fullName_title)
     }
 }
