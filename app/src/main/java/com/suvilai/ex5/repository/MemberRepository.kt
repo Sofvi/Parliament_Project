@@ -12,7 +12,7 @@ class MemberRepository(private val api: ApiService, private val memberDao: Membe
 
     fun getMembers() = memberDao.getMembers()
 
-    fun getParty(party: String) = memberDao.getParty(party)
+    //fun getParty(party: String) = memberDao.getParty(party)
 
     fun insert(vararg allMembers: ParliamentMembers) = memberDao.insert(*allMembers)
 

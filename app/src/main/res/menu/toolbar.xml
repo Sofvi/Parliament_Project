@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Filter by party"
+        android:id="@+id/drop_list"
+        android:icon="@drawable/ic_baseline_filter_list_24"/>
+
+    <item android:title="Filter by popularity"
+        android:id="@+id/popularity" />
+
+</menu>

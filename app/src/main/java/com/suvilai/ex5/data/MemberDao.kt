@@ -15,6 +15,6 @@ interface MemberDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg users: ParliamentMembers)
 
-    @Query("SELECT * FROM ParliamentMembers WHERE party")
-    fun getParty(party: String): LiveData<List<ParliamentMembers>>
+    //@Query("SELECT * FROM ParliamentMembers WHERE party")
+    //fun getParty(party: String): LiveData<List<ParliamentMembers>>
 }

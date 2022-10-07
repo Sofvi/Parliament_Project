@@ -37,11 +37,12 @@
             android:layout_toEndOf="@+id/imageView"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/abhaya_libre"
+            android:fontFamily="@font/amaranth"
             android:gravity="center_vertical"
             android:text="@{member.fullname}"
             android:textColor="@color/black"
-            android:textSize="22sp">
+            android:textSize="23sp">
+
         </TextView>
 
         <TextView
@@ -50,7 +51,10 @@
             android:layout_height="30dp"
             android:layout_marginTop="70dp"
             android:layout_toEndOf="@+id/imageView"
-            android:text="@{member.party}"/>
+            android:fontFamily="@font/open_sans"
+            android:text="@{member.party}"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 </layout>

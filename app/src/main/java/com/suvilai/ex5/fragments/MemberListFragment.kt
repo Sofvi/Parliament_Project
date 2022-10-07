@@ -63,15 +63,6 @@ class MemberListFragment : Fragment() {
 
     }
 
-    /*
-    override fun onParliamentMemberClick(v: View?, member: ParliamentMembers) {
-        val action = MemberListFragment.toMemberDetailsFragment(member.hetekaId)
-        findNavController().navigate(action)
-    }
-
-     */
-
-
     companion object {
         @JvmStatic
         @BindingAdapter("loadListItemImage")
@@ -83,21 +74,14 @@ class MemberListFragment : Fragment() {
         }
     }
 
-
-
     /*
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun loadFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.memberDetailsFragment,fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 
-
-        //takes data from manual class
-        val data = Datasource().member()
-
-        adapter = MemberListAdapter(data)
-        val recyclerView = binding.memberRecyclerView
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-         */
+     */
 
 }
