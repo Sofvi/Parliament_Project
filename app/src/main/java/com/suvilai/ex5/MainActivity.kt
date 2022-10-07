@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        //val navHostFragment =
-          //  supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        //val navController = navHostFragment.navController
-
         //WorkManager.getInstance(MyApp.appContext).enqueueUniquePeriodicWork("updateMembers", ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest)
 
         //setupActionBarWithNavController(findNavController(R.id.fragmentContainerView))

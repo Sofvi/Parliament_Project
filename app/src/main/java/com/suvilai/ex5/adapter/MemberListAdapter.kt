@@ -8,10 +8,8 @@ import com.suvilai.ex5.databinding.ListItemBinding
 
 
 class MemberListAdapter(
-    private val dataset: List<ParliamentMembers>
+    private val dataset: List<ParliamentMembers>,
 ) : RecyclerView.Adapter<MemberListAdapter.MyViewHolder>() {
-
-    //private var dataset = emptyList<ParliamentMembers>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,13 +24,11 @@ class MemberListAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        //holder.fullName.text = dataset[position].toString()
         holder.setViewHolderData(dataset[position])
     }
     override fun getItemCount() = dataset.size
 
     inner class MyViewHolder(val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root) {
-        //val fullName: TextView = itemView.findViewById(R.id.fullName_title)
 
 
         fun setViewHolderData(member: ParliamentMembers) {

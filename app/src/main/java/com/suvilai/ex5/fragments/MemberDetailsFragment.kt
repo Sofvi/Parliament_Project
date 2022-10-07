@@ -1,64 +1,71 @@
 package com.suvilai.ex5.fragments
-/*
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
-import com.suvilai.ex5.ParliamentMember
-import com.suvilai.ex5.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.distinctUntilChanged
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.suvilai.ex5.MyApp
+import com.suvilai.ex5.adapter.MemberListAdapter
 import com.suvilai.ex5.databinding.FragmentMemberDetailsBinding
+import com.suvilai.ex5.network.ImageApiService
+import com.suvilai.ex5.viewmodels.MemberDetailsViewModel
+import com.suvilai.ex5.viewmodels.MemberDetailsViewModelFactory
+import com.suvilai.ex5.viewmodels.MemberListViewModel
+import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
+import kotlinx.android.synthetic.main.fragment_member_list.*
 
+
+private lateinit var binding: FragmentMemberDetailsBinding
 
 class MemberDetailsFragment : Fragment() {
 
-    private var member: ParliamentMember? = null
+    // App
+    private val application by lazy { requireActivity().application as MyApp }
 
-    companion object {
-        const val LETTER = "letter"
-    }
+    //ViewModel
+    //private val memberViewModel : MemberListViewModel by viewModels {
+      //  MemberListViewModelFactory(application.memberRepository) }
+    private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
+        MemberDetailsViewModelFactory(application.memberRepository) }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentMemberDetailsBinding = FragmentMemberDetailsBinding.inflate(inflater, container, false)
-        binding.member = this.member
+        binding = FragmentMemberDetailsBinding.inflate(inflater,container,false)
 
-        return inflater.inflate(R.layout.fragment_member_details, container, false)
+        memberDetailsViewModel.populate()
+
+        return binding.root
     }
 
-    /*
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_member_details)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val p = ParliamentMember.Parliament(ParliamentMember.ParliamentMembersData.members)
-
-        val randomMember = (0..p.members.size).random()
-
-
-        val name : TextView = findViewById(R.id.nameView)
-        val id : TextView = findViewById(R.id.idView)
-        val party : TextView = findViewById(R.id.partyView)
-        val seat : TextView = findViewById(R.id.seatView)
-        val minister : TextView = findViewById(R.id.ministerView)
-
-
-        name.text = p.members[randomMember].fullName()
-        id.text = p.members[randomMember].hetekaId.toString()
-        party.text = p.members[randomMember].party
-        seat.text = p.members[randomMember].seatNumber.toString()
-
-        //shows if MP is a minister
-        if (p.members[randomMember].minister) { "Minister".also { minister.text = it }
-        } else {
-            " ".also { minister.text = it }
+        memberDetailsViewModel.allMembers.distinctUntilChanged().observe(viewLifecycleOwner) { members ->
+            binding.memberDetails = members.find { it.minister }
         }
     }
 
-     */
+    companion object {
+        @JvmStatic
+        @BindingAdapter("loadListItemImage")
+        fun loadListItemImage(view: ImageView, imageId: String?) {
+            Glide.with(view.context)
+                .load(ImageApiService.imageBuilder(imageId))
+                .override(500, 500)
+                .into(view)
+        }
+    }
 }
 
- */
+
