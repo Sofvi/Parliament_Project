@@ -11,10 +11,9 @@ import kotlinx.coroutines.launch
 /**     Suvi Laitinen, 8.10.2022
  *      2113710
  *
- *      ViewModel for the MemberListFragment.
+ *      RecyclerView Adapter -class for the MemberListFragment.
+ *      Shows the list of all the members of parliament.
  */
-
-
 
 class MemberListViewModel(private val memberRepository: MemberRepository) : ViewModel(){
 

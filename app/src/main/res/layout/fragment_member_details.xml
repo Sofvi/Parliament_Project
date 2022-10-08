@@ -8,56 +8,69 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView"
-            android:layout_width="185dp"
-            android:layout_height="194dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
             android:layout_weight="1"
             android:contentDescription="Image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.232"
+            app:layout_constraintVertical_bias="0.207"
             tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/shape">
+
+        </androidx.appcompat.widget.AppCompatImageView>
 
         <TextView
             android:id="@+id/idView"
-            android:layout_width="112dp"
-            android:layout_height="55dp"
+            android:layout_width="97dp"
+            android:layout_height="50dp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="35sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.023" />
 
         <TextView
             android:id="@+id/nameView"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:layout_marginTop="32dp"
-            android:text="Hello. Tää on Details Fragmentti."
+            android:layout_marginTop="484dp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/partyView"
-            android:layout_width="109dp"
+            android:layout_width="101dp"
             android:layout_height="41dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginTop="524dp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.291"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/seatView"
@@ -68,25 +81,25 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.069"
             app:layout_constraintStart_toEndOf="@+id/partyView"
             app:layout_constraintTop_toBottomOf="@+id/nameView"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/ministerView"
-            android:layout_width="208dp"
-            android:layout_height="52dp"
+            android:layout_width="224dp"
+            android:layout_height="96dp"
             android:textAlignment="center"
             android:textColor="#308334"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/partyView"
-            app:layout_constraintVertical_bias="0.064" />
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,9 @@ import androidx.room.Query
 @Dao
 interface MemberDao {
 
+    //@Insert(onConflict = OnConflictStrategy.REPLACE)
+    //suspend fun addMember(member : ParliamentMembers)
+
     @Query("SELECT * FROM ParliamentMembers")
     fun getMembers() : LiveData<List<ParliamentMembers>>
 

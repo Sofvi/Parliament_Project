@@ -9,7 +9,14 @@
         android:id="@+id/memberDetailsFragment"
         android:name="com.suvilai.ex5.fragments.MemberDetailsFragment"
         android:label="fragment_member_details"
-        tools:layout="@layout/fragment_member_details" />
+        tools:layout="@layout/fragment_member_details" >
+        <action
+            android:id="@+id/action_memberDetailsFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
+        <argument
+            android:name="passData"
+            app:argType="com.suvilai.ex5.data.ParliamentMembers" />
+    </fragment>
     <fragment
         android:id="@+id/memberListFragment"
         android:name="com.suvilai.ex5.fragments.MemberListFragment"

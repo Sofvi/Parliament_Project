@@ -15,11 +15,14 @@ import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = [ParliamentMembers::class], version = 1, exportSchema = false)
 abstract class MemberDatabase : RoomDatabase() {
+
     abstract fun memberDao() : MemberDao
+
     companion object {
         @Volatile
         private var INSTANCE: MemberDatabase? = null
-        fun getInstance(context: Context, scope: CoroutineScope): MemberDatabase {
+
+        fun getInstance(context: Context): MemberDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {

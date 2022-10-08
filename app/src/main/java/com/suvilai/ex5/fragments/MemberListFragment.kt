@@ -34,7 +34,7 @@ import kotlinx.android.synthetic.main.fragment_member_list.*
 class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMemberClickListener {
 
     private lateinit var binding: FragmentMemberListBinding
-    private lateinit var idk: ListItemBinding
+    private lateinit var listItem: ListItemBinding
 
     // App
     private val application by lazy { requireActivity().application as MyApp }
@@ -49,7 +49,7 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
     ): View {
 
         binding = FragmentMemberListBinding.inflate(inflater, container, false)
-        idk = DataBindingUtil.inflate(inflater, R.layout.list_item, container, false)
+        listItem = DataBindingUtil.inflate(inflater, R.layout.list_item, container, false)
 
         memberViewModel.allMembers.distinctUntilChanged().observe(viewLifecycleOwner) { members ->
             this.memberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -58,11 +58,14 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
 
         }
 
-        idk.listFrame.setOnClickListener {
+        /*
+        listItem.button.setOnClickListener {
             val action =
                 MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment()
             findNavController().navigate(action)
         }
+
+         */
 
         memberViewModel.populate()
 
@@ -71,7 +74,7 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
 
     override fun onParliamentMemberClick(v: View?, member: ParliamentMembers) {
 
-        val action = MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment()
+        val action = MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment(member)
         findNavController().navigate(action)
     }
 
