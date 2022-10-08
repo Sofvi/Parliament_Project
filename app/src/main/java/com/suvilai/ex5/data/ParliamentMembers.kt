@@ -9,6 +9,12 @@ import com.suvilai.ex5.repository.MemberRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
+/**     Suvi Laitinen, 8.10.2022
+ *      2113710
+ *
+ *      Data class for parliament members
+ */
+
 
 @Parcelize
 @Entity

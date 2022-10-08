@@ -1,9 +1,16 @@
 package com.suvilai.ex5.data
 
-import android.os.Parcelable
 import androidx.lifecycle.LiveData
-import androidx.room.*
-import kotlinx.android.parcel.Parcelize
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+
+/**     Suvi Laitinen, 8.10.2022
+ *      2113710
+ *
+ *      Dao interface. Contains SQL-calls.
+ */
 
 
 @Dao

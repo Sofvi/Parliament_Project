@@ -1,10 +1,20 @@
 package com.suvilai.ex5.viewmodels
 
 import androidx.lifecycle.*
+import com.suvilai.ex5.MyApp
+import com.suvilai.ex5.data.MemberDatabase
 import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.repository.MemberRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
+/**     Suvi Laitinen, 8.10.2022
+ *      2113710
+ *
+ *      ViewModel for the MemberListFragment.
+ */
+
+
 
 class MemberListViewModel(private val memberRepository: MemberRepository) : ViewModel(){
 

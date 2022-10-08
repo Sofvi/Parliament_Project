@@ -4,8 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.suvilai.ex5.MyApp
 import kotlinx.coroutines.CoroutineScope
+
+/**     Suvi Laitinen, 8.10.2022
+ *      2113710
+ *
+ *      RoomDB class for the database.
+ */
+
 
 @Database(entities = [ParliamentMembers::class], version = 1, exportSchema = false)
 abstract class MemberDatabase : RoomDatabase() {

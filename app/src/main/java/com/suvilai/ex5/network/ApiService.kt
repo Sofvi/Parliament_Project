@@ -10,7 +10,7 @@ import retrofit2.http.GET
 /**     Suvi Laitinen, 5.10.2022
  *      2113710
  *
- *      ApiService file
+ *      ApiService file. Handles Retrofit and Moshi calls for retrieving the members.
  */
 
 //Start of API

@@ -10,10 +10,12 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/listFrame"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/border"
-        android:id="@+id/listFrame">
+        android:clickable="true"
+        android:contextClickable="true">
 
         <ImageView
             android:id="@+id/imageView"
@@ -26,10 +28,26 @@
             app:loadListItemImage="@{member.pictureUrl}"
             tools:srcCompat="@tools:sample/avatars" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/fullName_title"
+            android:layout_alignBottom="@+id/party"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="121dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="14dp"
+            android:layout_toEndOf="@+id/party"
+            android:background="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:contentDescription="btn" />
+
+
         <TextView
             android:id="@+id/fullName_title"
-            android:layout_width="252dp"
-            android:layout_height="30dp"
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"

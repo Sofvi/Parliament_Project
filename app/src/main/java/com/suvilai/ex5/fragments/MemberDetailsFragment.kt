@@ -6,22 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.distinctUntilChanged
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.suvilai.ex5.MyApp
-import com.suvilai.ex5.adapter.MemberListAdapter
+import com.suvilai.ex5.R
 import com.suvilai.ex5.databinding.FragmentMemberDetailsBinding
 import com.suvilai.ex5.network.ImageApiService
-import com.suvilai.ex5.repository.MemberRepository
 import com.suvilai.ex5.viewmodels.MemberDetailsViewModel
 import com.suvilai.ex5.viewmodels.MemberDetailsViewModelFactory
-import com.suvilai.ex5.viewmodels.MemberListViewModel
-import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
-import kotlinx.android.synthetic.main.fragment_member_list.*
 
 
 private lateinit var binding: FragmentMemberDetailsBinding
@@ -31,13 +26,13 @@ private lateinit var memberDetailsViewModel: MemberDetailsViewModel
 class MemberDetailsFragment : Fragment() {
 
     // App
-    //private val application by lazy { requireActivity().application as MyApp }
+    private val application by lazy { requireActivity().application as MyApp }
 
     //ViewModel
     //private val memberViewModel : MemberListViewModel by viewModels {
-      //  MemberListViewModelFactory(application.memberRepository) }
+    //  MemberListViewModelFactory(application.memberRepository) }
     //private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
-      //  MemberDetailsViewModelFactory(application.memberRepository) }
+    //  MemberDetailsViewModelFactory(application.memberRepository) }
 
 
 
@@ -46,7 +41,7 @@ class MemberDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         //memberViewModel = ViewModelProvider(this)[MemberListViewModel::class.java]
-        memberDetailsViewModel = ViewModelProvider(this)[MemberDetailsViewModel::class.java]
+        memberDetailsViewModel = MemberDetailsViewModel(application.memberRepository)
 
         binding = FragmentMemberDetailsBinding.inflate(inflater,container,false)
 
@@ -55,6 +50,7 @@ class MemberDetailsFragment : Fragment() {
         return binding.root
     }
 
+    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -62,6 +58,8 @@ class MemberDetailsFragment : Fragment() {
             binding.memberDetails = members.find { it.minister }
         }
     }
+
+     */
 
     companion object {
         @JvmStatic

@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.suvilai.ex5.MyApp
+import com.suvilai.ex5.data.MemberDatabase
 import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.repository.MemberRepository
 import kotlinx.coroutines.Dispatchers
