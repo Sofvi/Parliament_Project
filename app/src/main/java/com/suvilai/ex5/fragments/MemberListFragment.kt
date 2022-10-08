@@ -58,15 +58,6 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
 
         }
 
-        /*
-        listItem.button.setOnClickListener {
-            val action =
-                MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment()
-            findNavController().navigate(action)
-        }
-
-         */
-
         memberViewModel.populate()
 
         return binding.root

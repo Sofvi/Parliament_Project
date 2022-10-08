@@ -28,17 +28,17 @@ import com.suvilai.ex5.viewmodels.MemberDetailsViewModelFactory
 import kotlinx.android.synthetic.main.fragment_member_details.*
 
 
+/**     Suvi Laitinen, 9.10.2022
+ *      2113710
+ *
+ *      The member detail fragment of the application. Shows the details of
+ *      the member pressed in the MemberListFragment RecyclerView.
+ */
+
 private lateinit var binding : FragmentMemberDetailsBinding
 private lateinit var currentMember : ParliamentMembers
 
 class MemberDetailsFragment : Fragment() {
-
-    // App
-    //private val application by lazy { requireActivity().application as MyApp }
-
-    //ViewModel
-    //private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
-      //MemberDetailsViewModelFactory(application.memberRepository) }
 
     private val args by navArgs<MemberDetailsFragmentArgs>()
 
@@ -64,7 +64,7 @@ class MemberDetailsFragment : Fragment() {
         return binding.root
     }
 
-    // Get a member from the ParliamentMembersData object and edit the fragment views accordingly
+    // Finds a member from ParliamentMembers and shows the details
     private fun getMember() {
         val memb = currentMember
         binding.idView.text = (memb.hetekaId.toString())
@@ -78,9 +78,10 @@ class MemberDetailsFragment : Fragment() {
         //binding.pointView.text = currentPoints.toString()
     }
 
-    // Check if the member is a minister and return a string accordingly
-    private fun getMinistry(memb : ParliamentMembers) : String = if (memb.minister) "Minister" else "Member of parliament"
+    // Check if the member is a minister
+    private fun getMinistry(memb : ParliamentMembers) : String = if (memb.minister) "Minister" else " "
 
+    //Provides pictures of members
     companion object {
         @JvmStatic
         @BindingAdapter("loadListItemImage")
