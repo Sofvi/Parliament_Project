@@ -14,18 +14,11 @@ import com.suvilai.ex5.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    //private val periodicWorkRequest = PeriodicWorkRequestBuilder<DownloadWorker>(24, TimeUnit.HOURS).build()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        //WorkManager.getInstance(MyApp.appContext).enqueueUniquePeriodicWork("updateMembers", ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest)
-
-        //setupActionBarWithNavController(findNavController(R.id.fragmentContainerView))
     }
 
 }

@@ -1,6 +1,7 @@
 package com.suvilai.ex5.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.suvilai.ex5.data.ParliamentMembers
@@ -8,8 +9,8 @@ import com.suvilai.ex5.databinding.ListItemBinding
 
 
 class MemberListAdapter(
-    private val dataset: List<ParliamentMembers>,
-) : RecyclerView.Adapter<MemberListAdapter.MyViewHolder>() {
+    private val dataset: List<ParliamentMembers>
+) : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -24,17 +25,43 @@ class MemberListAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.setViewHolderData(dataset[position])
+        holder.bind(dataset[position])
     }
+
     override fun getItemCount() = dataset.size
+}
 
-    inner class MyViewHolder(val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root) {
 
 
-        fun setViewHolderData(member: ParliamentMembers) {
+    class MyViewHolder(val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root) {
+
+        /*
+        init {
+            binding.root.setOnClickListener(this)
+        }
+
+         */
+
+        /*
+        lateinit var listener: OnParliamentMemberClickListener
+        lateinit var index: Number
+
+         */
+
+        fun bind(member: ParliamentMembers) {
             binding.member = member
         }
 
+        /*
+        override fun onClick(v: View?) {
+            this.listener.onParliamentMemberClick(v, binding.member!!)
+        }
 
+        companion object {
+            interface OnParliamentMemberClickListener {
+                fun onParliamentMemberClick(v: View?, member: ParliamentMembers)
+            }
+        }
+
+         */
     }
-}

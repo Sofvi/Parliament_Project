@@ -7,7 +7,6 @@
         <variable
             name="member"
             type="com.suvilai.ex5.data.ParliamentMembers" />
-
     </data>
 
     <RelativeLayout

@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.distinctUntilChanged
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.suvilai.ex5.MyApp
 import com.suvilai.ex5.R
 import com.suvilai.ex5.adapter.MemberListAdapter
+import com.suvilai.ex5.adapter.MyViewHolder
+import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.FragmentMemberListBinding
+import com.suvilai.ex5.databinding.ListItemBinding
 import com.suvilai.ex5.network.ImageApiService
 import com.suvilai.ex5.viewmodels.MemberDetailsViewModel
 import com.suvilai.ex5.viewmodels.MemberDetailsViewModelFactory
@@ -31,24 +35,42 @@ import kotlinx.android.synthetic.main.list_item.*
  */
 
 
-private lateinit var binding: FragmentMemberListBinding
 
 class MemberListFragment : Fragment() {
+
+    private lateinit var binding: FragmentMemberListBinding
+    private lateinit var idk: ListItemBinding
+    private lateinit var memberDetailsViewModel: MemberDetailsViewModel
+    private lateinit var memberViewModel: MemberListViewModel
 
     // App
     private val application by lazy { requireActivity().application as MyApp }
 
     //ViewModel
-    private val memberViewModel : MemberListViewModel by viewModels {
-        MemberListViewModelFactory(application.memberRepository) }
-    private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
-        MemberDetailsViewModelFactory(application.memberRepository) }
+    //private val memberViewModel : MemberListViewModel by viewModels {
+    //  MemberListViewModelFactory(application.memberRepository) }
+    //private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
+    //  MemberDetailsViewModelFactory(application.memberRepository) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMemberListBinding.inflate(inflater,container,false)
+
+        memberViewModel = MemberListViewModel(application.memberRepository)
+        memberDetailsViewModel = MemberDetailsViewModel(application.memberRepository)
+
+       binding = FragmentMemberListBinding.inflate(inflater, container, false)
+       idk = DataBindingUtil.inflate(inflater, R.layout.list_item, container, false)
+
+
+        idk.listFrame.setOnClickListener {
+            val action =
+                MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment()
+            findNavController().navigate(action)
+        }
+
+
 
         memberViewModel.populate()
 
@@ -61,8 +83,28 @@ class MemberListFragment : Fragment() {
         memberViewModel.allMembers.distinctUntilChanged().observe(viewLifecycleOwner) { members ->
             this.memberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             this.memberRecyclerView.adapter = MemberListAdapter(members)
+
+
+            //MemberListAdapter.ParliamentMemberListener {
+            //  this.findNavController().navigate(
+            //    MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment()
+            //)
+            //})
+
         }
+
+        //memberDetailsViewModel.populate()
     }
+
+
+    /*
+    override fun onParliamentMemberClick(v: View?, member: ParliamentMembers) {
+        val action = MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment()
+        findNavController().navigate(action)
+    }
+
+     */
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.bottom_nav, menu)
@@ -79,5 +121,6 @@ class MemberListFragment : Fragment() {
                 .into(view)
         }
     }
-
 }
+
+

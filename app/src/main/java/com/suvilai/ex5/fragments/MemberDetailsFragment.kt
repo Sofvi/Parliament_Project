@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.distinctUntilChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -15,6 +16,7 @@ import com.suvilai.ex5.MyApp
 import com.suvilai.ex5.adapter.MemberListAdapter
 import com.suvilai.ex5.databinding.FragmentMemberDetailsBinding
 import com.suvilai.ex5.network.ImageApiService
+import com.suvilai.ex5.repository.MemberRepository
 import com.suvilai.ex5.viewmodels.MemberDetailsViewModel
 import com.suvilai.ex5.viewmodels.MemberDetailsViewModelFactory
 import com.suvilai.ex5.viewmodels.MemberListViewModel
@@ -23,24 +25,29 @@ import kotlinx.android.synthetic.main.fragment_member_list.*
 
 
 private lateinit var binding: FragmentMemberDetailsBinding
+//private lateinit var memberViewModel: MemberListViewModel
+private lateinit var memberDetailsViewModel: MemberDetailsViewModel
 
 class MemberDetailsFragment : Fragment() {
 
     // App
-    private val application by lazy { requireActivity().application as MyApp }
+    //private val application by lazy { requireActivity().application as MyApp }
 
     //ViewModel
     //private val memberViewModel : MemberListViewModel by viewModels {
       //  MemberListViewModelFactory(application.memberRepository) }
-    private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
-        MemberDetailsViewModelFactory(application.memberRepository) }
+    //private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
+      //  MemberDetailsViewModelFactory(application.memberRepository) }
 
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        //memberViewModel = ViewModelProvider(this)[MemberListViewModel::class.java]
+        memberDetailsViewModel = ViewModelProvider(this)[MemberDetailsViewModel::class.java]
+
         binding = FragmentMemberDetailsBinding.inflate(inflater,container,false)
 
         memberDetailsViewModel.populate()

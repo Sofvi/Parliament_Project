@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Dao
 interface MemberDao {
 
-    @Query("SELECT * FROM ParliamentMembers ORDER BY lastname")
+    @Query("SELECT * FROM ParliamentMembers")
     fun getMembers() : LiveData<List<ParliamentMembers>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
