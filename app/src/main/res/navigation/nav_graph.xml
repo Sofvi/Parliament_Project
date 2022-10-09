@@ -17,11 +17,11 @@
             android:name="passData"
             app:argType="com.suvilai.ex5.data.ParliamentMembers" />
         <action
-            android:id="@+id/action_memberDetailsFragment_to_gradeFragment"
-            app:destination="@id/gradeFragment" />
-        <action
             android:id="@+id/action_memberDetailsFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/action_memberDetailsFragment_to_gradeDialogFragment"
+            app:destination="@id/gradeDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/memberListFragment"
@@ -30,18 +30,6 @@
         <action
             android:id="@+id/action_memberListFragment_to_memberDetailsFragment"
             app:destination="@id/memberDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/gradeFragment"
-        android:name="com.suvilai.ex5.fragments.GradeFragment"
-        android:label="grade_fragment"
-        tools:layout="@layout/grade_fragment" >
-        <action
-            android:id="@+id/action_gradeFragment_to_memberDetailsFragment"
-            app:destination="@id/memberDetailsFragment" />
-        <argument
-            android:name="passGrade"
-            app:argType="com.suvilai.ex5.data.ParliamentMembers" />
     </fragment>
     <fragment
         android:id="@+id/commentFragment"
@@ -55,4 +43,12 @@
             android:name="passComment"
             app:argType="com.suvilai.ex5.data.ParliamentMembers" />
     </fragment>
+    <dialog
+        android:id="@+id/gradeDialogFragment"
+        android:name="com.suvilai.ex5.fragments.GradeDialogFragment"
+        android:label="GradeDialogFragment" >
+        <action
+            android:id="@+id/action_gradeDialogFragment_to_memberDetailsFragment"
+            app:destination="@id/memberDetailsFragment" />
+    </dialog>
 </navigation>

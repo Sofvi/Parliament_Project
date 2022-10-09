@@ -2,9 +2,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <rotate
-            android:fromDegrees="-75"
+            android:fromDegrees="-80"
         android:pivotX="100%"
-        android:pivotY="80%"
+        android:pivotY="75%"
         android:toDegrees="40">
         <shape android:shape="rectangle">
             <stroke

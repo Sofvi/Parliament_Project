@@ -59,7 +59,7 @@ class MemberDetailsFragment : Fragment() {
         binding.bottomNavDetails.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.like -> {
-                    findNavController().navigate(R.id.gradeFragment)
+                    findNavController().navigate(R.id.gradeDialogFragment)
                     true
                 }
                 R.id.comment -> {
