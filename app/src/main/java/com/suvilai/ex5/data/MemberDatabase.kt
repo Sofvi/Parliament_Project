@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
  */
 
 
-@Database(entities = [ParliamentMembers::class], version = 1, exportSchema = false)
+@Database(entities = [ParliamentMembers::class, Grade::class], version = 2, exportSchema = false)
 abstract class MemberDatabase : RoomDatabase() {
 
     abstract fun memberDao() : MemberDao
@@ -23,19 +23,20 @@ abstract class MemberDatabase : RoomDatabase() {
         private var INSTANCE: MemberDatabase? = null
 
         fun getInstance(context: Context): MemberDatabase {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
+            }
             synchronized(this) {
-                var instance = INSTANCE
-                if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        MemberDatabase::class.java, "member_database"
-                    )
-                        .fallbackToDestructiveMigration().build()
-                    INSTANCE = instance
-                }
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    MemberDatabase::class.java,
+                    "member_database"
+                ).fallbackToDestructiveMigration()
+                    .build()
+                INSTANCE = instance
                 return instance
             }
-
         }
     }
 }

@@ -50,5 +50,8 @@
         <action
             android:id="@+id/action_gradeDialogFragment_to_memberDetailsFragment"
             app:destination="@id/memberDetailsFragment" />
+        <argument
+            android:name="passGrade"
+            app:argType="com.suvilai.ex5.data.ParliamentMembers" />
     </dialog>
 </navigation>

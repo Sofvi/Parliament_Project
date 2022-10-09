@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity
+@Entity(tableName = "grade_table")
 data class Grade (
     @PrimaryKey
     val personId: Int,

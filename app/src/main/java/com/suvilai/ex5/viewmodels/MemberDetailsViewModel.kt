@@ -2,12 +2,14 @@ package com.suvilai.ex5.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.suvilai.ex5.MyApp
+import com.suvilai.ex5.data.MemberDatabase
+import com.suvilai.ex5.repository.GradeRepository
 
 
 class MemberDetailsViewModel : ViewModel() {
-    /*
+
     private val gradeRepository: GradeRepository
-    //val allMembers: LiveData<List<ParliamentMembers>> = memberRepository.getMembers()
 
 
     init {
@@ -15,6 +17,7 @@ class MemberDetailsViewModel : ViewModel() {
         gradeRepository = GradeRepository(memberDao)
     }
 
+    /*
     fun updateGrade(grade: Grade) {
         viewModelScope.launch(Dispatchers.IO) {
             gradeRepository.updateGrade(grade)
@@ -24,6 +27,7 @@ class MemberDetailsViewModel : ViewModel() {
     fun getCurrentGrade(hetekaId: Int) = gradeRepository.getCurrentGrade(hetekaId)
 
      */
+
 }
 
 class MemberDetailsViewModelFactory : ViewModelProvider.Factory {

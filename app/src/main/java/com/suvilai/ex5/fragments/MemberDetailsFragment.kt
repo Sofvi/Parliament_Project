@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.suvilai.ex5.R
+import com.suvilai.ex5.data.Grade
 import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.FragmentMemberDetailsBinding
 import com.suvilai.ex5.network.ImageApiService
@@ -24,7 +25,7 @@ import com.suvilai.ex5.network.ImageApiService
  */
 
 private lateinit var binding : FragmentMemberDetailsBinding
-private lateinit var currentMember : ParliamentMembers
+lateinit var currentMember : ParliamentMembers
 
 class MemberDetailsFragment : Fragment() {
 
@@ -42,17 +43,6 @@ class MemberDetailsFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_details, container, false)
 
         currentMember = args.passData
-
-        /*
-        val callback: OnBackPressedCallback =
-            object  : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    findNavController().navigate(R.id.action_memberDetailsFragment_to_memberListFragment)
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-
-         */
 
         getMember()
 
@@ -75,21 +65,6 @@ class MemberDetailsFragment : Fragment() {
         return binding.root
     }
 
-/*
-    private fun updateDatabase(grade: Grade) {
-        memberDetailsViewModel.updateGrade(grade)
-    }
-
-
-
-
-    private fun updateGrade(amount: Int) {
-        currentGrade += amount
-        updateUi()
-    }
-
-     */
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.bottom_nav_details, menu)
@@ -105,9 +80,7 @@ class MemberDetailsFragment : Fragment() {
         Picasso.get().load("https://avoindata.eduskunta.fi/${memb.pictureUrl}").into(binding.imageView)
         binding.partyView.text = (memb.party)
         binding.nameView.text = (memb.fullname)
-        //binding.txtAge.text = getString(R.string.years_old, (2021 - memb.bornYear))
-        //binding.txtConstituency.text = memb.constituency
-        //binding.pointView.text = currentPoints.toString()
+       // binding.gradeHere.text = currentGrade.toString()
     }
 
     // Check if the member is a minister

@@ -13,6 +13,9 @@ import androidx.room.*
 @Dao
 interface MemberDao {
 
+
+    //Member
+
     //@Insert(onConflict = OnConflictStrategy.REPLACE)
     //suspend fun addMember(member : ParliamentMembers)
 
@@ -25,22 +28,22 @@ interface MemberDao {
     //@Query("SELECT * FROM ParliamentMembers WHERE party")
     //fun getParty(party: String): LiveData<List<ParliamentMembers>>
 
+
     //Grade
-    /*
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addGrade(grade: Grade)
+    fun addGrade(grade: Grade)
 
     @Update
-    suspend fun updateGrade(grade: Grade)
+    fun updateGrade(grade: Grade)
 
-    @Query("SELECT GRADE(*) FROM Grade")
-    suspend fun getGrade() : Int
+    @Query("SELECT COUNT(*) FROM grade_table")
+    fun getGradeCount() : Int
 
-    @Query("SELECT * FROM Grade WHERE personId like :personId")
-    fun getCurrentGrade(personId: Int): LiveData<Grade>
+   // @Query("SELECT * FROM grade_table WHERE personId like :personId")
+    //fun getCurrentGrade(personId: Int): LiveData<Grade>
 
-    @Query("SELECT * FROM Grade WHERE personId like :personId")
-    suspend fun getGradeasGrade(personId: Int): Grade
+    //@Query("SELECT * FROM grade_table WHERE personId like :personId")
+    //fun getGradeAsGrade(personId: Int): Grade
 
-     */
 }
