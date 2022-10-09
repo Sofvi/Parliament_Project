@@ -40,7 +40,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="?attr/colorPrimary"
-                app:menu="@menu/bottom_nav" />
+                app:itemIconTint="#B19E82"
+                app:itemTextColor="@color/black"
+                app:menu="@menu/bottom_nav"
+                android:textSize="12sp"
+                app:labelVisibilityMode="labeled"/>
 
         </FrameLayout>
 
