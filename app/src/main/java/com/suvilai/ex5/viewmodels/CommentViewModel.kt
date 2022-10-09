@@ -1,7 +1,7 @@
-package com.suvilai.ex5.fragments
+package com.suvilai.ex5.viewmodels
 
 import androidx.lifecycle.ViewModel
 
-class GradeViewModel : ViewModel() {
+class CommentViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

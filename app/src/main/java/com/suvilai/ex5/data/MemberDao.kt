@@ -1,10 +1,7 @@
 package com.suvilai.ex5.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 /**     Suvi Laitinen, 8.10.2022
  *      2113710
@@ -27,4 +24,23 @@ interface MemberDao {
 
     //@Query("SELECT * FROM ParliamentMembers WHERE party")
     //fun getParty(party: String): LiveData<List<ParliamentMembers>>
+
+    //Grade
+    /*
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addGrade(grade: Grade)
+
+    @Update
+    suspend fun updateGrade(grade: Grade)
+
+    @Query("SELECT GRADE(*) FROM Grade")
+    suspend fun getGrade() : Int
+
+    @Query("SELECT * FROM Grade WHERE personId like :personId")
+    fun getCurrentGrade(personId: Int): LiveData<Grade>
+
+    @Query("SELECT * FROM Grade WHERE personId like :personId")
+    suspend fun getGradeasGrade(personId: Int): Grade
+
+     */
 }
