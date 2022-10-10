@@ -75,8 +75,8 @@
                 app:layout_constraintVertical_bias="0.101" />
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="116dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,10 +84,22 @@
                 app:layout_constraintVertical_bias="0.0">
 
                 <TextView
+                    android:id="@+id/ministerView"
+                    android:layout_width="203dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="470dp"
+                    android:layout_marginStart="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="#1B651F"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/nameView"
                     android:layout_width="293dp"
                     android:layout_height="47dp"
                     android:layout_marginTop="508dp"
+                    android:layout_marginStart="10dp"
                     android:textAlignment="textStart"
                     android:textColor="#000000"
                     android:textSize="28sp" />
@@ -111,21 +123,6 @@
                     android:textColor="#000000"
                     android:textSize="24sp" />
             </FrameLayout>
-
-            <TextView
-                android:id="@+id/ministerView"
-                android:layout_width="203dp"
-                android:layout_height="49dp"
-                android:textAlignment="textStart"
-                android:textColor="#308334"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.081"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idView"
-                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 

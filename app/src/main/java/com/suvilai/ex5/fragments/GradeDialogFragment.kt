@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
@@ -14,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.suvilai.ex5.R
 import com.suvilai.ex5.data.Grade
-import com.suvilai.ex5.databinding.FragmentMemberDetailsBinding
 import com.suvilai.ex5.databinding.GradeDialogFragmentBinding
 import com.suvilai.ex5.viewmodels.GradeDialogViewModel
 import com.suvilai.ex5.viewmodels.GradeDialogViewModelFactory

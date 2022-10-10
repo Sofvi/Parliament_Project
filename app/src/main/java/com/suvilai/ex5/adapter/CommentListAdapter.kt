@@ -2,11 +2,8 @@ package com.suvilai.ex5.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.suvilai.ex5.data.Comment
-import com.suvilai.ex5.data.ParliamentMembers
-import com.suvilai.ex5.databinding.CommentFragmentBinding
 import com.suvilai.ex5.databinding.CommentItemBinding
 
 /**     Suvi Laitinen, 10.10.2022

@@ -17,7 +17,6 @@ import com.suvilai.ex5.data.Comment
 import com.suvilai.ex5.databinding.CommentFragmentBinding
 import com.suvilai.ex5.viewmodels.CommentViewModel
 import com.suvilai.ex5.viewmodels.CommentViewModelFactory
-import kotlinx.android.synthetic.main.comment_fragment.*
 
 /**     Suvi Laitinen, 10.10.2022
 *       2113710
@@ -34,6 +33,8 @@ private lateinit var adapter: CommentListAdapter
 class CommentFragment : Fragment() {
 
     private val args by navArgs<CommentFragmentArgs>()
+
+    // ViewModel
     private val commentViewModel : CommentViewModel by viewModels {
         CommentViewModelFactory()
     }
@@ -50,6 +51,7 @@ class CommentFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        // Tries to send the comment
         binding.sendComment.setOnClickListener {
             val commentText = binding.editComment.text.toString()
             val hetekaId = args.passComment.hetekaId

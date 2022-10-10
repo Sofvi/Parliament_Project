@@ -29,23 +29,6 @@
             tools:srcCompat="@tools:sample/avatars" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
-            android:layout_width="41dp"
-            android:layout_height="37dp"
-            android:layout_alignTop="@+id/fullName_title"
-            android:layout_alignBottom="@+id/party"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="117dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="9dp"
-            android:layout_toEndOf="@+id/party"
-            android:background="@drawable/ic_baseline_arrow_forward_ios_24"
-            android:clickable="true"
-            android:contentDescription="btn"
-            android:contextClickable="true" />
-
         <TextView
             android:id="@+id/fullName_title"
             android:layout_width="212dp"

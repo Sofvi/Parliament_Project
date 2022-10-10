@@ -2,7 +2,6 @@ package com.suvilai.ex5.repository
 
 import com.suvilai.ex5.data.Comment
 import com.suvilai.ex5.data.CommentDao
-import com.suvilai.ex5.data.MemberDao
 
 /**     Suvi Laitinen, 10.10.2022
  *      2113710

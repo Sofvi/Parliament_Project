@@ -21,8 +21,6 @@ import com.suvilai.ex5.network.ImageApiService
 import com.suvilai.ex5.viewmodels.MemberListViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
 import kotlinx.android.synthetic.main.fragment_member_list.*
-import java.lang.Math.random
-import java.nio.file.Files.size
 
 /**     Suvi Laitinen, 5.10.2022
  *      2113710
@@ -58,6 +56,7 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
         return binding.root
     }
 
+    // Navigates to MemberDetails
     override fun onParliamentMemberClick(v: View?, member: ParliamentMembers) {
 
         val action = MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment(member)
@@ -69,6 +68,8 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
 
     }
 
+    // Brings photos with the help of ImageApiService
+    // Uses Glide, an image loading and caching library
     companion object {
         @JvmStatic
         @BindingAdapter("loadListItemImage")

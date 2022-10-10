@@ -39,13 +39,14 @@ class MemberListAdapter(
 }
 
 
+// In charge of clickListeners
 class MyViewHolder(val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root),View.OnClickListener  {
     init {
         binding.root.setOnClickListener(this)
     }
 
-    lateinit var listener: OnParliamentMemberClickListener
-    lateinit var index: Number
+    private lateinit var listener: OnParliamentMemberClickListener
+    private lateinit var index: Number
 
     override fun onClick(v: View?) {
         this.listener.onParliamentMemberClick(v, binding.member!!)
