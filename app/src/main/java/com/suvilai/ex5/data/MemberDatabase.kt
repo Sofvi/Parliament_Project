@@ -9,11 +9,11 @@ import kotlinx.coroutines.CoroutineScope
 /**     Suvi Laitinen, 8.10.2022
  *      2113710
  *
- *      RoomDB class for the database.
+ *      RoomDB class for MemberDatabase.
  */
 
 
-@Database(entities = [ParliamentMembers::class, Grade::class], version = 2, exportSchema = false)
+@Database(entities = [ParliamentMembers::class], version = 1, exportSchema = false)
 abstract class MemberDatabase : RoomDatabase() {
 
     abstract fun memberDao() : MemberDao

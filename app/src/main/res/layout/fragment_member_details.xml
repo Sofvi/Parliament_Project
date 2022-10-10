@@ -74,45 +74,43 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.101" />
 
-            <TextView
-                android:id="@+id/nameView"
-                android:layout_width="293dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="508dp"
-                android:textAlignment="textStart"
-                android:textColor="#000000"
-                android:textSize="28sp"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="116dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
 
-            <TextView
-                android:id="@+id/partyView"
-                android:layout_width="101dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="552dp"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/nameView"
+                    android:layout_width="293dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="508dp"
+                    android:textAlignment="textStart"
+                    android:textColor="#000000"
+                    android:textSize="28sp" />
 
-            <TextView
-                android:id="@+id/seatView"
-                android:layout_width="67dp"
-                android:layout_height="40dp"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/partyView"
-                app:layout_constraintTop_toBottomOf="@+id/nameView"
-                app:layout_constraintVertical_bias="0.0" />
+                <TextView
+                    android:id="@+id/partyView"
+                    android:layout_width="101dp"
+                    android:layout_height="41dp"
+                    android:layout_marginTop="552dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/seatView"
+                    android:layout_width="67dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="552dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/ministerView"
@@ -122,44 +120,12 @@
                 android:textColor="#308334"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/nameView"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.081"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idView"
                 app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/gradeHere"
-                android:layout_width="69dp"
-                android:layout_height="35dp"
-                android:hint="Grade"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.439"
-                app:layout_constraintStart_toEndOf="@+id/seatView"
-                app:layout_constraintTop_toBottomOf="@+id/nameView"
-                app:layout_constraintVertical_bias="0.188">
-
-            </TextView>
-
-            <ImageView
-                android:layout_width="66dp"
-                android:layout_height="59dp"
-                android:src="@drawable/ic_baseline_star_rate_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/gradeHere"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.845">
-
-            </ImageView>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 

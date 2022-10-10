@@ -1,33 +1,37 @@
 package com.suvilai.ex5.viewmodels
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+
+import androidx.lifecycle.*
 import com.suvilai.ex5.MyApp
-import com.suvilai.ex5.data.Grade
-import com.suvilai.ex5.data.MemberDatabase
+import com.suvilai.ex5.data.*
 import com.suvilai.ex5.repository.GradeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
+/**     Suvi Laitinen, 8.10.2022
+ *      2113710
+ *
+ *      ViewModel for GradeDialogFragment.
+ */
 
 class GradeDialogViewModel : ViewModel() {
     private val gradeRepository: GradeRepository
 
     init {
-        val memberDao = MemberDatabase.getInstance(MyApp.appContext).memberDao()
-        gradeRepository = GradeRepository(memberDao)
+        val gradeDao = GradeDatabase.getInstance(MyApp.appContext).gradeDao()
+        gradeRepository = GradeRepository(gradeDao)
     }
 
-    /*
+
     fun updateGrade(grade: Grade) {
         viewModelScope.launch(Dispatchers.IO) {
             gradeRepository.updateGrade(grade)
         }
     }
-
     fun getCurrentGrade(hetekaId: Int) = gradeRepository.getCurrentGrade(hetekaId)
 
-     */
+
+
 
 }
 
@@ -40,3 +44,4 @@ class GradeDialogViewModelFactory : ViewModelProvider.Factory {
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+

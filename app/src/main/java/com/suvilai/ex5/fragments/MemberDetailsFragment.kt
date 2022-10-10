@@ -6,15 +6,17 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.suvilai.ex5.R
-import com.suvilai.ex5.data.Grade
 import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.FragmentMemberDetailsBinding
 import com.suvilai.ex5.network.ImageApiService
+import com.suvilai.ex5.viewmodels.MemberDetailsViewModel
+import com.suvilai.ex5.viewmodels.MemberDetailsViewModelFactory
 
 
 /**     Suvi Laitinen, 9.10.2022
@@ -31,9 +33,9 @@ class MemberDetailsFragment : Fragment() {
 
     private val args by navArgs<MemberDetailsFragmentArgs>()
 
-    //private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
-      //  MemberDetailsViewModelFactory()
-    //}
+    private val memberDetailsViewModel : MemberDetailsViewModel by viewModels {
+       MemberDetailsViewModelFactory()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +60,8 @@ class MemberDetailsFragment : Fragment() {
                 }
                 else -> {
                     false
+                }
             }
-        }
         }
 
         return binding.root
@@ -80,7 +82,6 @@ class MemberDetailsFragment : Fragment() {
         Picasso.get().load("https://avoindata.eduskunta.fi/${memb.pictureUrl}").into(binding.imageView)
         binding.partyView.text = (memb.party)
         binding.nameView.text = (memb.fullname)
-       // binding.gradeHere.text = currentGrade.toString()
     }
 
     // Check if the member is a minister

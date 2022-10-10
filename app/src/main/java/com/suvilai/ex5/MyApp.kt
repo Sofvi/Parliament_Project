@@ -3,25 +3,25 @@ package com.suvilai.ex5
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
-import com.suvilai.ex5.data.MemberDatabase
-import com.suvilai.ex5.network.ApiClient
-import com.suvilai.ex5.repository.GradeRepository
-import com.suvilai.ex5.repository.MemberRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
+
+/**     Suvi Laitinen, 10.10.2022
+ *      2113710
+ *
+ *      The Application class for the app.
+ *      Gives access to app context.
+ */
 
 class MyApp : Application() {
-
-
     companion object {
         lateinit var appContext: Context
+        lateinit var appResources: Resources
     }
 
-    private val appDatabase by lazy { MemberDatabase.getInstance(this) }
-
-    val memberRepository by lazy {
-        MemberRepository(ApiClient.retrofitService, appDatabase.memberDao())}
-
+    override fun onCreate() {
+        super.onCreate()
+        appContext = applicationContext
+        appResources = resources
+    }
 }
 
 

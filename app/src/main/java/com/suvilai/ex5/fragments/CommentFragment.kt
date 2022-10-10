@@ -1,33 +1,45 @@
 package com.suvilai.ex5.fragments
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.suvilai.ex5.R
-import com.suvilai.ex5.viewmodels.CommentViewModel
+/*
+private lateinit var binding: CommentFragmentBinding
+private lateinit var adapter: CommentListAdapter
 
 class CommentFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CommentFragment()
+    private val args by navArgs<CommentFragmentArgs>()
+    private val commentViewModel : CommentViewModel by viewModels {
+        CommentViewModelFactory()
     }
-
-    private lateinit var viewModel: CommentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.comment_fragment, container, false)
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.comment_fragment,container,false)
+
+        adapter = commentViewModel.adapter
+        val recyclerView = binding.commentRecycler
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        commentViewModel.getSelectedCommentsLiveData().distinctUntilChanged().observe(viewLifecycleOwner) {
+            this.commentRecycler.layoutManager = LinearLayoutManager(requireContext())
+            this.commentRecycler.adapter = CommentListAdapter()
+        }
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onSendCommentButtonClicked(v: View?) {
+        if (binding.editComment.text.isEmpty()) {
+            return
+        } else {
+            commentViewModel.createComment(args.hetekaId, binding.editComment.text.toString()) {
+                binding.
+            }
+        }
     }
-
 }
+
+ */

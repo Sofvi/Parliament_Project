@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Filter by party"
-        android:id="@+id/drop_list"
+        android:id="@+id/filterPartyView"
         android:icon="@drawable/ic_baseline_filter_list_24"/>
 
     <item android:title="Filter by popularity"

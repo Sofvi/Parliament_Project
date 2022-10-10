@@ -11,7 +11,6 @@ import androidx.lifecycle.distinctUntilChanged
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.suvilai.ex5.MyApp
 import com.suvilai.ex5.R
 import com.suvilai.ex5.adapter.MemberListAdapter
 import com.suvilai.ex5.adapter.MyViewHolder
@@ -19,7 +18,6 @@ import com.suvilai.ex5.data.ParliamentMembers
 import com.suvilai.ex5.databinding.FragmentMemberListBinding
 import com.suvilai.ex5.databinding.ListItemBinding
 import com.suvilai.ex5.network.ImageApiService
-import com.suvilai.ex5.viewmodels.MemberDetailsViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
 import kotlinx.android.synthetic.main.fragment_member_list.*
@@ -36,12 +34,10 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
     private lateinit var binding: FragmentMemberListBinding
     private lateinit var listItem: ListItemBinding
 
-    // App
-    private val application by lazy { requireActivity().application as MyApp }
 
     //ViewModel
     private val memberViewModel : MemberListViewModel by viewModels {
-        MemberListViewModelFactory(application.memberRepository) }
+        MemberListViewModelFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +54,7 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
 
         }
 
-        memberViewModel.populate()
+        memberViewModel.fillMembers()
 
         return binding.root
     }
@@ -85,5 +81,6 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
         }
     }
 }
+
 
 

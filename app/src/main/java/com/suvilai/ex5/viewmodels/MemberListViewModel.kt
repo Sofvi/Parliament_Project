@@ -1,6 +1,9 @@
 package com.suvilai.ex5.viewmodels
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.suvilai.ex5.MyApp
 import com.suvilai.ex5.data.MemberDatabase
 import com.suvilai.ex5.data.ParliamentMembers
@@ -11,27 +14,36 @@ import kotlinx.coroutines.launch
 /**     Suvi Laitinen, 8.10.2022
  *      2113710
  *
- *      RecyclerView Adapter -class for the MemberListFragment.
- *      Shows the list of all the members of parliament.
+ *      ViewModel for the MemberListFragment.
  */
 
-class MemberListViewModel(private val memberRepository: MemberRepository) : ViewModel(){
+class MemberListViewModel : ViewModel(){
+
+    private val memberRepository: MemberRepository
+
+    init {
+        val memberDao = MemberDatabase.getInstance(MyApp.appContext).memberDao()
+        memberRepository = MemberRepository(memberDao)
+    }
 
     val allMembers: LiveData<List<ParliamentMembers>> = memberRepository.getMembers()
 
-    fun populate() {
+
+    fun fillMembers() {
         viewModelScope.launch(Dispatchers.IO) {
             val members = memberRepository.fetch()
             memberRepository.insert(*members.toTypedArray())
         }
     }
+
+
 }
 
-class MemberListViewModelFactory(private val memberRepository: MemberRepository) : ViewModelProvider.Factory {
+class MemberListViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MemberListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return MemberListViewModel(memberRepository) as T
+            return MemberListViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
