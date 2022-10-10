@@ -2,6 +2,7 @@ package com.suvilai.ex5.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.suvilai.ex5.data.Comment
 import com.suvilai.ex5.data.ParliamentMembers
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -28,9 +29,6 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
     @GET("seating.json")
     suspend fun getMemberList() : List<ParliamentMembers>
-
-    //@GET("extras.json")
-    //suspend fun getMemberDetailsList() : List<ParliamentMemberInfo>
 }
 
 object ApiClient {

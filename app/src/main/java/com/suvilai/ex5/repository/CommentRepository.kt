@@ -1,17 +1,17 @@
 package com.suvilai.ex5.repository
-/*
+
 import com.suvilai.ex5.data.Comment
+import com.suvilai.ex5.data.CommentDao
 import com.suvilai.ex5.data.MemberDao
 
+/**     Suvi Laitinen, 10.10.2022
+ *      2113710
+ *
+ *      Repository for the Comment -table in Room
+ */
 
-class CommentRepository(private val memberDao: MemberDao) {
+class CommentRepository(private val commentDao: CommentDao) {
 
-    fun getCommentsForMember(hetekaId: Int) = memberDao.getMatchingComment(hetekaId)
-
-    suspend fun addComment(comment: Comment) = memberDao.addComment(comment)
-
-    suspend fun deleteComment(comment: Comment) = memberDao.deleteComment(comment)
-
+    fun addComment(comment: Comment) = commentDao.addComment(comment)
 }
 
- */

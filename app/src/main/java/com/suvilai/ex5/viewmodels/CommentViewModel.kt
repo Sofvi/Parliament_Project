@@ -1,11 +1,15 @@
 package com.suvilai.ex5.viewmodels
-/*
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.suvilai.ex5.MyApp
 import com.suvilai.ex5.adapter.CommentListAdapter
-import com.suvilai.ex5.data.MemberDatabase
+import com.suvilai.ex5.data.Comment
+import com.suvilai.ex5.data.CommentDatabase
 import com.suvilai.ex5.repository.CommentRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**     Suvi Laitinen, 10.10.2022
  *      2113710
@@ -13,22 +17,20 @@ import com.suvilai.ex5.repository.CommentRepository
  *      ViewModel for the CommentFragment
  */
 
-
 class CommentViewModel : ViewModel() {
     private val repository: CommentRepository
     var adapter = CommentListAdapter()
-    var commentsSelected : Boolean = false
 
     init {
-        val memberDao = MemberDatabase.getInstance(MyApp.appContext).memberDao()
-        repository = CommentRepository(memberDao)
+        val commentDao = CommentDatabase.getInstance(MyApp.appContext).commentDao()
+        repository = CommentRepository(commentDao)
     }
 
-    fun getCommentsForMember(hetekaId: Int) = repository.getCommentsForMember(hetekaId)
-
-    fun getSelectedCommentsLiveData() = adapter.selectedCommentsLiveData
-
-    fun getSelectedCommentsList() = adapter.selectedCommentsList
+    fun addComment(comment: Comment) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addComment(comment)
+        }
+    }
 
 }
 
@@ -42,4 +44,3 @@ class CommentViewModelFactory : ViewModelProvider.Factory {
     }
 }
 
- */

@@ -35,8 +35,6 @@ class MemberListViewModel : ViewModel(){
             memberRepository.insert(*members.toTypedArray())
         }
     }
-
-
 }
 
 class MemberListViewModelFactory : ViewModelProvider.Factory {

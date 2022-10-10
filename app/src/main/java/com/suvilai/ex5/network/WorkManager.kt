@@ -15,8 +15,6 @@ import com.suvilai.ex5.repository.MemberRepository
  *      WorkManager for getting parliament members from database
  */
 
-
-
 class WorkManager(appContext: Context, workerParams: WorkerParameters) :
 CoroutineWorker(appContext, workerParams) {
 

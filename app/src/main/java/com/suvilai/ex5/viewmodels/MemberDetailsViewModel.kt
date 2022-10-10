@@ -30,18 +30,6 @@ class MemberDetailsViewModel : ViewModel() {
         val gradeDao = GradeDatabase.getInstance(MyApp.appContext).gradeDao()
         gradeRepository = GradeRepository(gradeDao)
     }
-
-
-    fun updateGrade(grade: Grade) {
-        viewModelScope.launch(Dispatchers.IO) {
-            gradeRepository.updateGrade(grade)
-        }
-    }
-
-    fun getCurrentGrade(hetekaId: Int) = gradeRepository.getCurrentGrade(hetekaId)
-
-
-
 }
 
 class MemberDetailsViewModelFactory : ViewModelProvider.Factory {

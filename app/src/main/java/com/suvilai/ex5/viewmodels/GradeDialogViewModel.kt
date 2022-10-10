@@ -28,11 +28,6 @@ class GradeDialogViewModel : ViewModel() {
             gradeRepository.updateGrade(grade)
         }
     }
-    fun getCurrentGrade(hetekaId: Int) = gradeRepository.getCurrentGrade(hetekaId)
-
-
-
-
 }
 
 class GradeDialogViewModelFactory : ViewModelProvider.Factory {

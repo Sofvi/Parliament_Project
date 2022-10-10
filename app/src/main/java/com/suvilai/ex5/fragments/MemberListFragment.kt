@@ -21,6 +21,8 @@ import com.suvilai.ex5.network.ImageApiService
 import com.suvilai.ex5.viewmodels.MemberListViewModel
 import com.suvilai.ex5.viewmodels.MemberListViewModelFactory
 import kotlinx.android.synthetic.main.fragment_member_list.*
+import java.lang.Math.random
+import java.nio.file.Files.size
 
 /**     Suvi Laitinen, 5.10.2022
  *      2113710
@@ -49,10 +51,7 @@ class MemberListFragment : Fragment(), MyViewHolder.Companion.OnParliamentMember
 
         memberViewModel.allMembers.distinctUntilChanged().observe(viewLifecycleOwner) { members ->
             this.memberRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            this.memberRecyclerView.adapter = MemberListAdapter(members,this)
-
-
-        }
+            this.memberRecyclerView.adapter = MemberListAdapter(members,this) }
 
         memberViewModel.fillMembers()
 

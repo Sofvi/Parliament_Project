@@ -17,6 +17,4 @@ class MemberRepository(private val memberDao: MemberDao) {
     fun insert(vararg allMembers: ParliamentMembers) = memberDao.insert(*allMembers)
 
     suspend fun fetch() = ApiClient.retrofitService.getMemberList()
-
-
 }

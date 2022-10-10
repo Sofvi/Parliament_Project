@@ -20,8 +20,5 @@ interface GradeDao {
 
     @Query("SELECT * FROM grade_table WHERE hetekaId LIKE :hetekaId")
     fun getCurrentGrade(hetekaId: Int) : LiveData<Grade>
-
-   // @Query("SELECT grade(*) FROM grade_table")
-    //fun getGrade(): Int
 }
 
